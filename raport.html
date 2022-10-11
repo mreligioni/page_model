@@ -1,0 +1,1122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <title>Żabka raporty</title>
+    <style>
+        * {
+          box-sizing: border-box;
+          margin: 0;
+          padding: 0;
+          font-family: 'Roboto', sans-serif;
+        }
+        :root {
+          font-size: 62.5%;  
+
+        /* Colors */
+
+        --grey: #AAAAAA;
+        --grey-font: #535353;
+        --grey-border: #E8E8E8;
+        --grey-background: #F9F9F9;
+        --green: #006420;
+        --light-green: #04AA59;
+        --softRed: #F46262;
+        --yellowChart: #F5BC22;
+        --greenChart: #00B05A;
+        --redChart: #EA5E3F;
+        --darkBlueChart: #315AC6;
+        --lighBlueChart: #179CE7;
+
+
+          /* Dimensions */
+
+        --widthChart: 127px;
+        --heightChart: 163px;
+        --widthGraph: 0.8rem;
+        }
+        .container {
+          width: 59.5rem;
+          height: 84.2rem;
+          padding: 2.2rem 2.2rem 4.5rem 2.2rem;
+        }
+        .subheader {
+          font-size: .8rem;
+          font-weight: 500;
+          line-height: 2rem;
+          letter-spacing: .03rem;
+          color: var(--grey);
+        }
+        .big-paragraph {
+          font-size: 1rem;
+          font-weight: 400;
+          color: var(--grey-font);
+          line-height: 1.2rem;
+          display: inline-block;
+        }
+        .big-paragraph--s {
+          font-size: .9rem;
+        }
+        .big-paragraph-break {
+         margin-bottom: 7px;
+        }
+        .grey-font {
+          font-size: 1rem;
+          font-weight: 500;
+          color: var(--grey);
+          line-height: 1.2rem;
+        }
+      .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;        
+      }
+      .header-title {
+        font-size: 1.2rem;
+        font-weight: 500;
+        line-height: 1.4rem;
+        margin-left: .4rem;
+        color: var(--grey-font);
+      }
+      .wrapper-cards {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        width: 55.1rem;
+        min-height: 5rem;
+        margin-top: 1.7rem;
+        background-color: var(--grey-background);
+        border: 1px solid var(--grey-border);
+        border-radius: .8rem;
+      }
+      .card-item {
+        flex: 1 1 13.7rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        height: 100%;   
+        padding: .5rem 0 1rem 1.2rem;    
+      }
+      .card-item:not(:first-child) {
+        border-left: 1px solid var(--grey-border);
+      }
+      .card-item-header {
+        display: flex;
+        align-items: center;
+      }
+      .primary-icon {
+        margin-right: .6rem;
+      }
+      .card-item-content {
+        margin-top: .3rem;
+      }
+      .wrapper-summaries {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        align-items: flex-start;
+        justify-content: center;
+        align-content: flex-start;
+        margin: 1.8rem 0 0 .4rem;
+      }
+      .summary {
+        flex: 1 0;
+      }
+      .summary .big-paragraph {
+        padding: .2rem 0 1.4rem;
+      }
+        .title {
+          border: 1px solid var(--grey-border);
+          width: 100%;
+          height: 34px;
+          margin-top: 1rem;
+          padding: 1rem .8rem 0 1.4rem;
+          background-color: var(--grey-background);
+          border-radius:  .4rem .4rem 0 0;
+        }
+        .title--lower {
+          padding: 0 1.5rem 0 1.4rem;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+        }
+      .description-first {
+        border-width: 0 1px 1px 1px;
+        border-color: var(--grey-border);
+        border-style: solid;
+        width: 100%;
+        height: 452px;
+        padding: 1.2rem .8rem 0 1rem;
+        border-radius:  0 0 .4rem .4rem;
+      }
+        .description-second {
+          border-width: 0 1px 1px 1px;
+          border-color: var(--grey-border);
+          border-style: solid;
+          width: 100%;
+          height: 765px;
+          border-radius:  0 0 .4rem .4rem;
+        }
+        .description-third {
+          border-width: 0 1px 1px 1px;
+          border-color: var(--grey-border);
+          border-style: solid;
+          width: 100%;
+          height: 126px;
+          border-radius:  0 0 .4rem .4rem;
+        }
+        .description-fourth {
+          border-width: 0 1px 1px 1px;
+          border-color: var(--grey-border);
+          border-style: solid;
+          width: 100%;
+          height: 549px;
+          border-radius:  0 0 .4rem .4rem;
+        }
+        .description-fifth {
+          border-width: 0 1px 1px 1px;
+          border-color: var(--grey-border);
+          border-style: solid;
+          width: 100%;
+          height: 331px;
+          border-radius:  0 0 .4rem .4rem;
+          display: flex;
+          flex-direction: column;
+          padding: 12px 6px 6px 14px;
+          justify-content: flex-start;;
+        }
+      .description-first:not(:nth-child(3n)) {
+        margin-right: 1rem;
+      }
+      .description-header-title {
+        font-size: 1rem;
+        line-height: 1.2rem;
+        font-weight: 400;
+        color: var(--green);
+        text-align: center;
+      }
+        .description-header-title--left {
+          text-align: left;
+          display: flex;
+        }
+      .description-rating-container {
+        display: flex;
+        align-items: center;
+      }
+       .customTable {
+         width: 417px;
+         background-color: #FFFFFF;
+         border-spacing: 0;
+         border-width: 1px;
+         border-color: var(--grey-border);
+         border-style: solid;
+         color: #000000;
+         border-radius: 4px;
+         margin: 20px auto 36px;
+         text-align: left;
+       }
+        .table-cell {
+          border-bottom: 1px solid var(--grey-border);
+          padding-left: 14px;
+        }
+        .table-cell-left {
+          border-bottom: 1px solid var(--grey-border);
+          border-right: 1px solid var(--grey-border);
+          padding-left: 14px;
+        }
+        .table-last-cell {
+          padding-left: 14px;
+        }
+        .table-last-cell-left {
+          padding-left: 14px;
+          border-right: 1px solid var(--grey-border);
+        }
+        th {
+          font-style: normal;
+          font-weight: 500;
+          font-size: 8px;
+          line-height: 20px;
+          letter-spacing: 0.03em;
+          color: var(--grey);
+          width: 50%;
+        }
+        tr {
+          margin-top: auto;
+          margin-bottom: auto;
+        }
+        table.customTable tr {
+          height: 28px;
+        }
+        table.customTable thead {
+          background-color: var(--grey-background);
+        }
+        table.customTable .table-head {
+          height: 20px;
+        }
+        .rectangle {
+          width: 11px;
+          height: 11px;
+          border-radius: 3px;
+          display: inline-block;
+          margin-right: 5px;
+        }
+        .benchmark {
+          display: flex;
+          align-items: center;
+        }
+        .box {
+          width: 137px;
+          height: 38px;
+          border: solid var(--grey-border);
+          border-width: 0 1px 1px 0;
+          display: flex;
+          flex-direction: column;
+          padding: 6px 0 8px 14px;
+          justify-content: center;
+        }
+        .box2 {
+          width: 138px;
+          height: 38px;
+          border: solid var(--grey-border);
+          border-width: 0 0 1px 0;
+          display: flex;
+          flex-direction: column;
+          padding: 6px 0 8px 14px;
+          justify-content: center;
+        }
+        .boxes {
+          display: flex;
+          flex-direction: row;
+          flex-wrap: wrap;
+          justify-content: flex-start;
+          align-items: center;
+          align-content: flex-start;
+        }
+        .rating {
+          width: 100%;
+          height: 52px;
+          border: solid var(--grey-border);
+          border-width: 0 0 1px 0;
+          display: flex;
+          flex-direction: column;
+          padding: 6px 6px 6px 14px;
+          justify-content: center;
+        }
+        .photos {
+          width: 100%;
+          height: 130px;
+          border: solid var(--grey-border);
+          border-width: 0 0 1px 0;
+          display: flex;
+          flex-direction: column;
+          padding: 6px 6px 6px 14px;
+          justify-content: center;
+        }
+        .images {
+          display: flex;
+          align-items: center;
+        }
+        .ingredients {
+          width: 100%;
+          height: 118px;
+          border: solid var(--grey-border);
+          border-width: 0 0 1px 0;
+          display: flex;
+          flex-direction: column;
+          padding: 6px 6px 6px 14px;
+          justify-content: center;
+        }
+        .product-desc {
+          width: 100%;
+          height: 414px;
+          border: none;
+          display: flex;
+          flex-direction: column;
+          padding: 6px 6px 0 14px;
+          justify-content: center;
+        }
+        .ingredients2 {
+          width: 100%;
+          height: 96px;
+          border: solid var(--grey-border);
+          border-width: 0 0 1px 0;
+          display: flex;
+          flex-direction: column;
+          padding: 6px 6px 6px 14px;
+          justify-content: center;
+        }
+        .product-desc2 {
+          width: 100%;
+          height: 232px;
+          border: none;
+          display: flex;
+          flex-direction: column;
+          padding: 2px 6px 0 14px;
+          justify-content: center;
+        }
+        .taste {
+          width: 100%;
+          height: 126px;
+          border: solid var(--grey-border);
+          border-width: 0 0 1px 0;
+          display: flex;
+          flex-direction: column;
+          padding: 6px 6px 6px 14px;
+          justify-content: center;
+        }
+      .numeric-rating {
+        display: flex;
+        align-items: center;
+        font-size: 1rem;
+        font-weight: 500;
+        line-height: 1.2rem;
+        color: #535353;
+      }
+      .numeric-rating .grey-font {
+        line-height: 1.4rem;
+      }
+      .up-arrow, .down-arrow {
+        margin-left: .34rem;
+        margin-right: .43rem;
+      }
+        .black-arrow-wrap {
+          display: flex;
+          justify-content: flex-end;
+        }
+      .black-arrow {
+        height: 10px;
+        width: 11px;
+        margin-top: 2.0rem;
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-image: url("https://i.postimg.cc/7Zq7TqFW/Group-1329.png");
+        }
+        .black-arrow--two {
+          margin-top: 0;
+        }
+      .description-rating-label {
+        display: inline-block;
+        margin-left: 11px;
+        padding: .1rem .4rem;
+        background-color: var(--light-green);
+        font-size: .8rem;
+        font-weight: 500;
+        line-height: 1rem;
+        color: white;
+        border-radius: .2rem;
+        letter-spacing: .05rem;
+        gap: 4px;
+      }
+      .rejected {
+        background-color: var(--softRed);
+      }
+      .charts {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+      }
+      .charts-label-y {
+        position: absolute;
+        top: 50%;
+        left: -50px;
+        transform: rotate(-90deg);
+        font-size: 1rem;
+        font-weight: 400;
+        color: var(--grey-font);
+        line-height: 1.2rem;
+        display: inline-block;
+      }
+        .charts-label-x {
+          margin-top: 26px;
+          display: flex;
+          justify-content: center;
+          padding-top: 8px;
+          margin-left: 17px;
+          border-top: 1px var(--grey-border) solid;
+          font-size: 1rem;
+          font-weight: 400;
+          color: var(--grey-font);
+          line-height: 1.2rem;
+      }
+        .chart-wrap {
+          position: relative;
+          display: flex;
+          margin-left: 17px;
+          justify-content: space-evenly;
+          border-left: 1px solid var(--grey-border);
+          border-right: 1px solid var(--grey-border);
+        }
+      .chart {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 163px;
+      }
+
+      .description-chart {
+        width: var(--widthChart);
+        height: var(--heightChart);
+        position: relative;
+      }
+      .description-chart-container {
+        width: var(--widthChart);
+        height: var(--heightChart);
+        display: flex;
+        padding: 0 30px;
+      }
+      .chart-lines-container {
+        position: absolute;
+        width: 100%;
+        height: 163px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        left: 0;
+      }
+      .chart-line {
+        width: 100%;
+        height: 1px;
+        background-color: var(--grey-border);
+      }
+      .graph-container {
+        position: relative;
+        flex: 1;
+        text-align: center;
+      }
+      .graph {
+        position: absolute;
+        width: var(--widthGraph);
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        border-radius: .2rem;
+        max-height: 100%;
+      }
+      .graph-darkBlue {
+        background-color: var(--darkBlueChart);
+      }
+      .graph-lightBlue {
+          background-color: var(--lighBlueChart);
+      }
+      .graph-green {
+        background-color: var(--greenChart);
+      }
+      .graph-red {
+        background-color: var(--redChart);
+      }
+      .graph-yellow {
+        background-color: var(--yellowChart);
+      }
+      .graph-percent {
+        position: absolute;
+        top: -1rem;
+        left: 50%;
+        transform: translateX(-50%);
+        text-align: center;
+        color: var(--grey-font);
+        font-weight: 500;
+        font-size: .8rem;
+        padding: .1rem;
+        letter-spacing: 0.03em;
+        font-style: normal;
+        line-height: 8px;
+      }
+      .graph-name {
+        position: absolute;
+        bottom: -1.4rem;
+        left: 50%;
+        transform: translateX(-50%);
+        text-align: center;
+        color: var(--grey-font);
+        font-weight: 400;
+      }
+      .description-details .subheader {
+        height: 1.1rem;
+        line-height: .8rem;
+      }
+      .description-details-item:not(:first-child) .subheader {
+        margin-top: 1rem;
+      }
+      .description-details-image {
+        width: 12.1rem;
+        height: 8rem;
+        margin-top: .6rem;
+        background-size: contain;
+        background-repeat: no-repeat;
+        border-radius: .3rem;
+      }
+      .description-details-image-background-1 {
+        background-image: url("https://i.postimg.cc/PPZw4ZJY/image-8a.jpg");
+        margin-right: 14px;
+      }
+      .description-details-image-background-2{
+        background-image: url("https://i.postimg.cc/WtxZgSNs/image-8.jpg");
+        margin-right: 14px;
+      }
+      .description-details-image-background-3 {
+        background-image: url("https://i.postimg.cc/CZMnSQNs/image-10.jpg");
+      }
+        .description-details-image-background-4 {
+          background-image: url("https://i.postimg.cc/18QNYtVT/image-9.png");
+          margin-right: 14px;
+        }
+        .description-details-image-background-5 {
+          background-image: url("https://i.postimg.cc/nXGQ8JvL/image-9a.png");
+          margin-right: 14px;
+        }
+        .description-details-image-background-6 {
+          background-image: url("https://i.postimg.cc/8FyJ5mXQ/image-11.png");
+        }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <header class="header">
+        <h1 class="header-title">KOMISYJNA ZMIANA RECEPTURY: SAŁATKA LUNCHBOX KURCZAK SER/ ROMATICA</h1>
+        <span class="subheader">1/4</span>
+      </header>
+      <section class="wrapper-cards">
+        <div class="card-item">
+          <div class="card-item-header">
+            <svg class="primary-icon" width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd" clip-rule="evenodd" d="M0.8906 3.10709C0.334202 3.49094 0 4.13714 0 4.82913V9.93037C0 11.0734 0.895431 12 2 12H10C11.1046 12 12 11.0734 12 9.93037V4.82913C12 4.13714 11.6658 3.49094 11.1094 3.10709L7.1094 0.347593C6.4376 -0.115864 5.5624 -0.115864 4.8906 0.347593L0.8906 3.10709ZM6 7C7.10457 7 8 6.10457 8 5C8 3.89543 7.10457 3 6 3C4.89543 3 4 3.89543 4 5C4 6.10457 4.89543 7 6 7Z" fill="#00B05A"/>
+              </svg>
+            <p class="subheader">TYP OCENY</p>
+          </div>
+          <p class="big-paragraph card-item-content type ">Degustacja kontrolna</p>
+        </div>
+        <div class="card-item">
+          <div class="card-item-header">
+            <svg class="primary-icon" width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="2" width="2" height="4" rx="1" fill="#EA5E3F"/>
+              <rect x="8" width="2" height="4" rx="1" fill="#EA5E3F"/>
+              <path fill-rule="evenodd" clip-rule="evenodd" d="M5 3H7C7 4.10457 7.89543 5 9 5C10.0171 5 10.8569 4.24077 10.9835 3.25812C11.5904 3.60152 12 4.25292 12 5V10C12 11.1046 11.1046 12 10 12H2C0.895431 12 0 11.1046 0 10V5C0 4.25293 0.409613 3.60152 1.0165 3.25812C1.14312 4.24076 1.9829 5 3 5C4.10457 5 5 4.10457 5 3ZM3 7C2.44772 7 2 7.44772 2 8V9C2 9.55228 2.44772 10 3 10H9C9.55229 10 10 9.55228 10 9V8C10 7.44772 9.55229 7 9 7H3Z" fill="#EA5E3F"/>
+              </svg>
+            <p class="subheader">DATA OCENY</p>
+          </div>
+          <p class="big-paragraph card-item-content date">21.03.2022</p>
+        </div>
+        <div class="card-item">
+          <div class="card-item-header">
+            <svg class="primary-icon" width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd" clip-rule="evenodd" d="M0.8906 3.10709C0.334202 3.49094 0 4.13714 0 4.82913V9.93037C0 11.0734 0.895431 12 2 12H10C11.1046 12 12 11.0734 12 9.93037V4.82913C12 4.13714 11.6658 3.49094 11.1094 3.10709L7.1094 0.347593C6.4376 -0.115864 5.5624 -0.115864 4.8906 0.347593L0.8906 3.10709ZM6 7C7.10457 7 8 6.10457 8 5C8 3.89543 7.10457 3 6 3C4.89543 3 4 3.89543 4 5C4 6.10457 4.89543 7 6 7Z" fill="#315AC6"/>
+              </svg>
+            <p class="subheader">REKLAMACJA</p>
+          </div>
+          <p class="big-paragraph card-item-content complaint">Nie</p>
+        </div>
+        <div class="card-item">
+          <div class="card-item-header">
+            <svg class="primary-icon" width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="8" y="8" width="4" height="4" rx="2" transform="rotate(90 8 8)" fill="#179CE7"/>
+              <rect x="8" width="4" height="4" rx="2" transform="rotate(90 8 0)" fill="#179CE7"/>
+              <rect x="8" y="4" width="4" height="4" rx="2" fill="#179CE7"/>
+              <rect y="4" width="4" height="4" rx="2" fill="#179CE7"/>
+              </svg>
+            <p class="subheader">REKOMENDACJA DKJ</p>
+          </div>
+          <p class="big-paragraph card-item-content recommendation">ND</p>
+        </div>
+      </section>
+      <section class="wrapper-summaries">
+        <div class="summary">
+          <p class="subheader">PODSUMOWANIE</p>
+          <p class="big-paragraph">Jakość próbki mieszanka sałat 1 (251/852) jest na dobrym, przez osoby akceptowalnym poziomie.
+          </p>
+        </div>
+        <div class="summary">
+          <p class="subheader">INNE NOTATKI</p>
+          <p class="big-paragraph">Do opakowań dołączono wygodny widelczyk, dzięki czemu można ją zjeść w dowolnym miejscu.</p>
+        </div>
+        <div class="summary">
+          <p class="subheader">DALSZE KROKI</p>
+          <p class="big-paragraph">ND</p>
+        </div>
+      </section>
+
+        <div class="title">
+            <h2 class="description-header-title">Wyniki badania</h2>
+        </div>
+
+      <div class="description-first">
+        <table class="customTable">
+          <thead>
+          <tr class="table-head">
+            <th class="table-cell-left"><p class="subheader">TYP PRÓBKI</p></th>
+            <th class="table-cell"><p class="subheader">OCENA</p></th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td class="table-cell-left"><div class="benchmark"><div class="rectangle graph-green"></div><p class="big-paragraph">Benchmark Żabka</p></div></td>
+            <td class="table-cell">
+              <div class="description-rating-container">
+                <p class="numeric-rating">
+                  4,65
+                  <svg class="up-arrow" width="9" height="10" viewBox="0 0 9 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="1.8537" y="5.14536" width="1.18161" height="4.72646" rx="0.5" transform="rotate(-135 1.8537 5.14536)" fill="#04AA59"/>
+                    <rect x="4.96631" y="9.11273" width="1.18161" height="7.41461" rx="0.5" transform="rotate(-180 4.96631 9.11273)" fill="#04AA59"/>
+                    <rect x="7.70261" y="4.30985" width="1.18161" height="4.72646" rx="0.5" transform="rotate(135 7.70261 4.30985)" fill="#04AA59"/>
+                  </svg>
+                  <span class="grey-font">/ 4,26</span>
+                <div class="description-rating-label">ZAAKCEPTOWANY</div>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td class="table-cell-left"><div class="benchmark"><div class="rectangle graph-red"></div><p class="big-paragraph">Benchmark Lidl</p></div></td>
+            <td class="table-cell">
+              <div class="description-rating-container">
+                <p class="numeric-rating">
+                  3,89
+                  <svg class="down-arrow" width="9" height="10" viewBox="0 0 9 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="6.8819" y="5.52578" width="1.18161" height="4.72646" rx="0.5" transform="rotate(45 6.8819 5.52578)" fill="#F46262"/>
+                    <rect x="3.7693" y="1.55841" width="1.18161" height="7.41461" rx="0.5" fill="#F46262"/>
+                    <rect x="1.03299" y="6.36129" width="1.18161" height="4.72646" rx="0.5" transform="rotate(-45 1.03299 6.36129)" fill="#F46262"/>
+                  </svg>
+                  <span class="grey-font">/ 4,20</span>
+                <div class="description-rating-label rejected">ODRZUCONY</div>
+                </p>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td class="table-cell-left"><div class="benchmark"><div class="rectangle graph-darkBlue"></div><p class="big-paragraph">Benchmark Tesco</p></div></td>
+            <td class="table-cell">
+              <div class="description-rating-container">
+                <p class="numeric-rating">
+                  4,16
+                  <svg class="down-arrow" width="9" height="10" viewBox="0 0 9 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="6.8819" y="5.52578" width="1.18161" height="4.72646" rx="0.5" transform="rotate(45 6.8819 5.52578)" fill="#F46262"/>
+                    <rect x="3.7693" y="1.55841" width="1.18161" height="7.41461" rx="0.5" fill="#F46262"/>
+                    <rect x="1.03299" y="6.36129" width="1.18161" height="4.72646" rx="0.5" transform="rotate(-45 1.03299 6.36129)" fill="#F46262"/>
+                  </svg>
+                  <span class="grey-font">/ 4,23</span>
+                <div class="description-rating-label rejected">ODRZUCONY</div>
+                </p>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td class="table-cell-left"><div class="benchmark"><div class="rectangle graph-lightBlue"></div><p class="big-paragraph">Benchmark Biedronka</p></div></td>
+            <td class="table-cell">
+              <div class="description-rating-container">
+                <p class="numeric-rating">
+                  4,42
+                  <svg class="up-arrow" width="9" height="10" viewBox="0 0 9 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="1.8537" y="5.14536" width="1.18161" height="4.72646" rx="0.5" transform="rotate(-135 1.8537 5.14536)" fill="#04AA59"/>
+                    <rect x="4.96631" y="9.11273" width="1.18161" height="7.41461" rx="0.5" transform="rotate(-180 4.96631 9.11273)" fill="#04AA59"/>
+                    <rect x="7.70261" y="4.30985" width="1.18161" height="4.72646" rx="0.5" transform="rotate(135 7.70261 4.30985)" fill="#04AA59"/>
+                  </svg>
+                  <span class="grey-font">/ 4,41</span>
+                <div class="description-rating-label">ZAAKCEPTOWANY</div>
+                </p>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td class="table-last-cell-left"><div class="benchmark"><div class="rectangle graph-yellow"></div><p class="big-paragraph">Benchmark Carrefour</p></div></td>
+            <td class="table-last-cell">
+              <div class="description-rating-container">
+                <p class="numeric-rating">
+                  4,07
+                  <svg class="down-arrow" width="9" height="10" viewBox="0 0 9 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="6.8819" y="5.52578" width="1.18161" height="4.72646" rx="0.5" transform="rotate(45 6.8819 5.52578)" fill="#F46262"/>
+                    <rect x="3.7693" y="1.55841" width="1.18161" height="7.41461" rx="0.5" fill="#F46262"/>
+                    <rect x="1.03299" y="6.36129" width="1.18161" height="4.72646" rx="0.5" transform="rotate(-45 1.03299 6.36129)" fill="#F46262"/>
+                  </svg>
+                  <span class="grey-font">/ 3,88</span>
+                <div class="description-rating-label rejected">ODRZUCONY</div>
+                </p>
+              </div>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+        <div class="charts">
+
+        <div class="chart-wrap">
+          <div class="charts-label-y big-paragraph">Wartość średnia</div>
+          <div class="chart-lines-container">
+            <div class="chart-line"></div>
+            <div class="chart-line"></div>
+            <div class="chart-line"></div>
+            <div class="chart-line"></div>
+            <div class="chart-line"></div>
+            <div class="chart-line"></div>
+          </div>
+        <div class="chart">
+          <div class="description-chart">
+          <div class="description-chart-container">
+
+            <div class="graph-container">
+              <div class="graph graph-green" style="height: 100%">
+                <div class="graph-percent">5,0</div>
+              </div>
+            </div>
+            <div class="graph-container">
+              <div class="graph graph-red" style="height: 90%">
+                <div class="graph-percent">4,5</div>
+              </div>
+            </div>
+            <div class="graph-container">
+              <div class="graph graph-darkBlue" style="height: 94%">
+                <div class="graph-percent">4,7</div>
+              </div>
+              <div class="graph-name big-paragraph">Kształt</div>
+            </div>
+            <div class="graph-container">
+              <div class="graph graph-lightBlue" style="height: 78%">
+                <div class="graph-percent">3,9</div>
+              </div>
+            </div>
+            <div class="graph-container">
+              <div class="graph graph-yellow" style="height: 80%">
+                <div class="graph-percent">4,0</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+        <div class="chart">
+            <div class="description-chart">
+              <div class="description-chart-container">
+
+                <div class="graph-container">
+                  <div class="graph graph-green" style="height: 94%">
+                    <div class="graph-percent">4,7</div>
+                  </div>
+                </div>
+                <div class="graph-container">
+                  <div class="graph graph-red" style="height: 94%">
+                    <div class="graph-percent">4,7</div>
+                  </div>
+                </div>
+                <div class="graph-container">
+                  <div class="graph graph-darkBlue" style="height: 76%">
+                    <div class="graph-percent">3,8</div>
+                  </div>
+                  <div class="graph-name big-paragraph">Tekstura</div>
+                </div>
+                <div class="graph-container">
+                  <div class="graph graph-lightBlue" style="height: 70%">
+                    <div class="graph-percent">3,5</div>
+                  </div>
+                </div>
+                <div class="graph-container">
+                  <div class="graph graph-yellow" style="height: 68%">
+                    <div class="graph-percent">3,4</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        <div class="chart">
+            <div class="description-chart">
+              <div class="description-chart-container">
+
+                <div class="graph-container">
+                  <div class="graph graph-green" style="height: 84%">
+                    <div class="graph-percent">4,2</div>
+                  </div>
+                </div>
+                <div class="graph-container">
+                  <div class="graph graph-red" style="height: 86%">
+                    <div class="graph-percent">4,3</div>
+                  </div>
+                </div>
+                <div class="graph-container">
+                  <div class="graph graph-darkBlue" style="height: 66%">
+                    <div class="graph-percent">3,3</div>
+                  </div>
+                  <div class="graph-name big-paragraph">Zapach</div>
+                </div>
+                <div class="graph-container">
+                  <div class="graph graph-lightBlue" style="height: 72%">
+                    <div class="graph-percent">3,6</div>
+                  </div>
+                </div>
+                <div class="graph-container">
+                  <div class="graph graph-yellow" style="height: 68%">
+                    <div class="graph-percent">3,4</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        <div class="chart">
+            <div class="description-chart">
+              <div class="description-chart-container">
+
+                <div class="graph-container">
+                  <div class="graph graph-green" style="height: 94%">
+                    <div class="graph-percent">4,7</div>
+                  </div>
+                </div>
+                <div class="graph-container">
+                  <div class="graph graph-red" style="height: 88%">
+                    <div class="graph-percent">4,4</div>
+                  </div>
+                </div>
+                <div class="graph-container">
+                  <div class="graph graph-darkBlue" style="height: 72%">
+                    <div class="graph-percent">3,6</div>
+                  </div>
+                  <div class="graph-name big-paragraph">Smak</div>
+                </div>
+                <div class="graph-container">
+                  <div class="graph graph-lightBlue" style="height: 76%">
+                    <div class="graph-percent">3,8</div>
+                  </div>
+                </div>
+                <div class="graph-container">
+                  <div class="graph graph-yellow" style="height: 47%">
+                    <div class="graph-percent">3,7</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+      </div>
+          <div class="charts-label-x big-paragraph">Wyróżniki</div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <header class="header">
+        <h1 class="header-title">KOMISYJNA ZMIANA RECEPTURY: SAŁATKA LUNCHBOX KURCZAK SER/ ROMATICA</h1>
+        <span class="subheader">2/4</span>
+      </header>
+
+
+      <div class="title title--lower">
+        <h2 class="description-header-title description-header-title--left">Mieszanka sałat 1</h2>
+        <div class="description-rating-container">
+          <p class="numeric-rating">
+            4,65
+            <svg class="up-arrow" width="9" height="10" viewBox="0 0 9 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="1.8537" y="5.14536" width="1.18161" height="4.72646" rx="0.5" transform="rotate(-135 1.8537 5.14536)" fill="#04AA59"/>
+              <rect x="4.96631" y="9.11273" width="1.18161" height="7.41461" rx="0.5" transform="rotate(-180 4.96631 9.11273)" fill="#04AA59"/>
+              <rect x="7.70261" y="4.30985" width="1.18161" height="4.72646" rx="0.5" transform="rotate(135 7.70261 4.30985)" fill="#04AA59"/>
+            </svg>
+            <span class="grey-font">/ 4,26</span>
+          <div class="description-rating-label">ZAAKCEPTOWANY</div>
+        </div>
+      </div>
+
+      <div class="description-second">
+        <div class="boxes">
+          <div class="box">
+            <p class="subheader">PRODUCENT</p>
+            <p class="big-paragraph big-paragraph--s">Romantica</p>
+          </div>
+          <div class="box">
+            <p class="subheader">PARTIA / TPS</p>
+            <p class="big-paragraph big-paragraph-s">152487 / 26.09.2022</p>
+          </div>
+          <div class="box">
+            <p class="subheader">TYP PRÓBKI</p>
+            <p class="big-paragraph big-paragraph--s">Benchmark Lidl</p>
+          </div>
+          <div class="box2">
+            <p class="subheader">KOD PRÓBKI</p>
+            <p class="big-paragraph big-paragraph--s">112/125</p>
+          </div>
+        </div>
+        <div class="rating">
+          <p class="subheader">UWAGI / OCENA</p>
+          <p class="big-paragraph big-paragraph--s">Do opakowania dołączono wygodny widelczyk, dzięki czemu można ją zjeść w dowolnym miejscu.</p>
+        </div>
+        <div class="photos">
+          <p class="subheader">FOTOGRAFIE PRODUKTU</p>
+          <div class="images">
+          <div class="description-details-image description-details-image-background-1"></div>
+          <div class="description-details-image description-details-image-background-2"></div>
+          <div class="description-details-image description-details-image-background-3"></div>
+            </div>
+        </div>
+        <div class="ingredients">
+          <p class="subheader">SKŁAD PRODUKTU</p>
+          <p class="big-paragraph big-paragraph--s">Mieszanka sałat 27 % w zmiennych proporcjach (sałata radicchio, roszponka, sałata strzępiasta), ser mozzarella 20 % (mleko pasteryzowane, sól, podpuszczka, regulator kwasowości: kwas cytrynowy), sos pesto pietruszkowe (olej rzepakowy, oliwa z oliwek, pestki słonecznika, sól, pieprz czarny mielony, natka pietruszki, ser twardy dojrzewający 5 % (mleko, serwatka (z mleka), podpuszczka, sól, substancja konserwująca: lizozym (z białka jaja kurzego), sól, pieprz), szynka dojrzewająca 9 % (mięso wieprzowe (100 g gotowego produktu wyprodukowano ze 140 g mięsa), sól, substancja konserwująca: azotan potasu), pomidory cherry, oliwki czarne (oliwki czarne, woda, sól, stabilizator: glukonian żelazawy), oliwki zielone (oliwki zielone, woda, sól, regulator kwasowości: kwas mlekowy), prażone nasiona słonecznika.</p>
+        </div>
+        <div class="product-desc">
+          <p class="subheader">OPIS ZE SPECYFIKACJI</p>
+          <p class="big-paragraph big-paragraph--s">
+            <p class="big-paragraph big-paragraph--s big-paragraph-break">Wygląd</p>
+            <p class="big-paragraph big-paragraph--s">Okrągła miska, w której znajdują się estetycznie ułożone składniki sałatki, tj. Mieszanka różnych rodzajów sałat, podłużne plasterki szynki dojrzewającej, małe kulki sera mozarella, oliwki czarne i zielone, pomidory świeże oraz prażone nasiona słonecznika. W centralnej części opakowania znajduje się okrągły pojemnik z sosem.</p>
+            <p class="big-paragraph big-paragraph--s big-paragraph-break">Opakowanie czyste, bez zabrudzeń, bez zacieków i plam. Wieko opakowania czyste.</p>
+
+          <p class="big-paragraph big-paragraph--s">- Mieszanka sałat (radicchio,roszponka, sałata strzępiasta) mix kolorów : biały, zielony, bordowy. Swieże, jędrne, bez oznak psucia.</p>
+          <p class="big-paragraph big-paragraph--s">- Ser mozzarella - jednakowe kulki koloru białego, rozmiar kulek mozzarella wyrównany, powierzchnia głaka, niepostrzępiona</p>
+          <p class="big-paragraph big-paragraph--s">- Sos pesto pietruszkowe- gęsty, półpłynny, zielony, z widocznymi kawałkami pietruszki.</p>
+          <p class="big-paragraph big-paragraph--s">- Szynka dojrzewająca - cienkie plasterki dzielące się na warstwę mięsną i tłuszczową,</p>
+          <p class="big-paragraph big-paragraph--s">- Pomidory cherry- małe pomidorki śliwkokształtne, powierzchnia gładka, kolor czerwony, typowy dla tego składnika</p>
+          <p class="big-paragraph big-paragraph--s">- Oliwki czarne z zalewy, w całości, bez uszkodzeń i pęknięć. Wielkość oliwek wyrównana, powierzchnia gładka</p>
+          <p class="big-paragraph big-paragraph--s">- Oliwki zielone- dojrzałe owoce, o szaro-zielonej barwie, owoce , w całości, bez uszkodzeń i pęknięć. Wielkość oliwek wyrównana.</p>
+          <p class="big-paragraph big-paragraph--s big-paragraph-break">- Prażone pestki słonecznika- kruche, lekko przyrumieniona skórka</p>
+
+          <p class="big-paragraph big-paragraph--s big-paragraph-break">Barwa:</p>
+
+          <p class="big-paragraph big-paragraph--s">Mieszanka sałat (radicchio,roszponka, sałata strzępiasta) mix kolorów w zależności od rodzaju : biały, jasno do ciemnnozielony, bordowy do fioletowego.</p>
+          <p class="big-paragraph big-paragraph--s">- Ser mozarella - biały</p>
+          <p class="big-paragraph big-paragraph--s">- Sos pesto pietruszkowe – zielony</p>
+          <p class="big-paragraph big-paragraph--s">- Szynka dojrzewająca – biała, jasnoróżowa, jasnobrązowa</p>
+          <p class="big-paragraph big-paragraph--s">- Pomidory cherry - czerwone</p>
+          <p class="big-paragraph big-paragraph--s">- Oliwki czarne - fioletowe, fioletowo-czarne,  ciemnobrązowe</p>
+          <p class="big-paragraph big-paragraph--s">- Oliwki zielone – szaro-zielone</p>
+          <p class="big-paragraph big-paragraph--s big-paragraph-break">- Prażone pestki słonecznika – brązowo-szare</p>
+
+          <p class="big-paragraph big-paragraph--s big-paragraph-break">Zapach:</p>
+
+          <p class="big-paragraph big-paragraph--s">Wybijający się zapach szynki dojrzewającej, lekko mleczny zapach sera mozzarella oraz oliwek dopełniony intensywnie pietruszkową wonią sosu pesto.</p>
+          <div class="black-arrow-wrap">
+          <div class="black-arrow"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <header class="header">
+        <h1 class="header-title">KOMISYJNA ZMIANA RECEPTURY: SAŁATKA LUNCHBOX KURCZAK SER/ ROMATICA</h1>
+        <span class="subheader">3/4</span>
+      </header>
+
+      <div class="title title--lower">
+        <h2 class="description-header-title description-header-title--left">Mieszanka sałat 1</h2>
+      </div>
+
+      <div class="description-third">
+        <div class="taste">
+          <p class="big-paragraph big-paragraph--s">
+          <p class="big-paragraph big-paragraph--s big-paragraph-break">Smak:
+
+          <p class="big-paragraph big-paragraph--s big-paragraph-break">Wyróżniający się smak szynki dojrzewającej, lekko mleczny smak sera mozzarella. Wyczuwalne oliwki.  Sos : Słony, z mocno wyczuwalnym aromatem pietruszki.
+
+          <p class="big-paragraph big-paragraph--s big-paragraph-break">Konsystencja:
+
+          <p class="big-paragraph big-paragraph--s big-paragraph-break">Po wymieszaniu wszystkich składników i polaniu sosem pesto pietruszkowe  wszystko tworzy zwartą mieszankę, z której wyróżniają się poszczególne składniki.</p>
+        </div>
+      </div>
+      <div class="title title--lower">
+        <h2 class="description-header-title description-header-title--left">Mieszanka sałat 1</h2>
+        <div class="description-rating-container">
+          <p class="numeric-rating">
+            4,65
+            <svg class="up-arrow" width="9" height="10" viewBox="0 0 9 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="1.8537" y="5.14536" width="1.18161" height="4.72646" rx="0.5" transform="rotate(-135 1.8537 5.14536)" fill="#04AA59"/>
+              <rect x="4.96631" y="9.11273" width="1.18161" height="7.41461" rx="0.5" transform="rotate(-180 4.96631 9.11273)" fill="#04AA59"/>
+              <rect x="7.70261" y="4.30985" width="1.18161" height="4.72646" rx="0.5" transform="rotate(135 7.70261 4.30985)" fill="#04AA59"/>
+            </svg>
+            <span class="grey-font">/ 4,26</span>
+          <div class="description-rating-label">ZAAKCEPTOWANY</div>
+        </div>
+      </div>
+
+      <div class="description-fourth">
+        <div class="boxes">
+          <div class="box">
+            <p class="subheader">PRODUCENT</p>
+            <p class="big-paragraph big-paragraph--s">Romantica</p>
+          </div>
+          <div class="box">
+            <p class="subheader">PARTIA / TPS</p>
+            <p class="big-paragraph big-paragraph--s">152487 / 26.09.2022</p>
+          </div>
+          <div class="box">
+            <p class="subheader">TYP PRÓBKI</p>
+            <p class="big-paragraph big-paragraph--s">Benchmark Lidl</p>
+          </div>
+          <div class="box2">
+            <p class="subheader">KOD PRÓBKI</p>
+            <p class="big-paragraph big-paragraph--s">112/127</p>
+          </div>
+        </div>
+        <div class="rating">
+          <p class="subheader">UWAGI / OCENA</p>
+          <p class="big-paragraph big-paragraph--s">Do opakowania dołączono wygodny widelczyk, dzięki czemu można ją zjeść w dowolnym miejscu.</p>
+
+        </div>
+        <div class="photos">
+          <p class="subheader">FOTOGRAFIE PRODUKTU</p>
+          <div class="images">
+          <div class="description-details-image description-details-image-background-4"></div>
+          <div class="description-details-image description-details-image-background-5"></div>
+          <div class="description-details-image description-details-image-background-6"></div>
+            </div>
+        </div>
+        <div class="ingredients2">
+          <p class="subheader">SKŁAD PRODUKTU</p>
+          <p class="big-paragraph big-paragraph--s">Mieszanka sałat 27 % w zmiennych proporcjach (sałata radicchio, roszponka, sałata strzępiasta), ser mozzarella 20 % (mleko pasteryzowane, sól, podpuszczka, regulator kwasowości: kwas cytrynowy), sos pesto pietruszkowe (olej rzepakowy, oliwa z oliwek, pestki słonecznika, sól, pieprz czarny mielony, natka pietruszki, ser twardy dojrzewający 5 % (mleko, serwatka (z mleka), podpuszczka, sól, substancja konserwująca: lizozym (z białka jaja kurzego), sól, pieprz), szynka dojrzewająca 9 % (mięso wieprzowe (100 g gotowego produktu wyprodukowano ze 140 g mięsa), sól, substancja konserwująca: azotan potasu).</p>
+        </div>
+        <div class="product-desc2">
+          <p class="subheader">OPIS ZE SPECYFIKACJI</p>
+          <p class="big-paragraph big-paragraph--s"><p class="big-paragraph big-paragraph--s big-paragraph-break">Wygląd:</p>
+
+          <p class="big-paragraph big-paragraph--s big-paragraph-break">Okrągła miska, w której znajdują się estetycznie ułożone składniki sałatki, tj. Mieszanka różnych rodzajów sałat, podłużne plasterki szynki dojrzewającej, małe kulki sera mozarella, oliwki czarne i zielone, pomidory świeże oraz prażone nasiona słonecznika. W centralnej części opakowania znajduje się okrągły pojemnik z sosem.</p>
+
+          <p class="big-paragraph big-paragraph--s big-paragraph-break">Opakowanie czyste, bez zabrudzeń, bez zacieków i plam. Wieko opakowania czyste.</p>
+
+          <p class="big-paragraph big-paragraph--s">- Mieszanka sałat (radicchio,roszponka, sałata strzępiasta) mix kolorów : biały, zielony, bordowy. Swieże, jędrne, bez oznak psucia.</p>
+          <p class="big-paragraph big-paragraph--s">- Ser mozzarella - jednakowe kulki koloru białego, rozmiar kulek mozzarella wyrównany, powierzchnia głaka, niepostrzępiona</p>
+          <p class="big-paragraph big-paragraph--s">- Sos pesto pietruszkowe- gęsty, półpłynny, zielony, z widocznymi kawałkami pietruszki.</p>
+          <p class="big-paragraph big-paragraph--s">- Szynka dojrzewająca - cienkie plasterki dzielące się na warstwę mięsną i tłuszczową,</p>
+          <p class="big-paragraph big-paragraph--s">- Pomidory cherry- małe pomidorki śliwkokształtne, powierzchnia gładka, kolor czerwony, typowy dla tego składnika</p>
+          <p class="big-paragraph big-paragraph--s">- Oliwki czarne z zalewy, w całości, bez uszkodzeń i pęknięć. Wielkość oliwek wyrównana, powierzchnia gładka</p>
+          <p class="big-paragraph big-paragraph--s">- Oliwki zielone- dojrzałe owoce, o szaro-zielonej barwie, owoce , w całości, bez uszkodzeń i pęknięć. Wielkość oliwek wyrównana.</p>
+          <p class="big-paragraph big-paragraph--s">- Prażone pestki słonecznika- kruche, lekko przyrumieniona skórka</p>
+          <div class="black-arrow-wrap">
+            <div class="black-arrow black-arrow--two"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <header class="header">
+        <h1 class="header-title">KOMISYJNA ZMIANA RECEPTURY: SAŁATKA LUNCHBOX KURCZAK SER/ ROMATICA</h1>
+        <span class="subheader">4/4</span>
+      </header>
+
+      <div class="title title--lower">
+        <h2 class="description-header-title description-header-title--left">Mieszanka sałat 2</h2>
+      </div>
+
+      <div class="description-fifth">
+        <p class="subheader">OPIS ZE SPECYFIKACJI</p>
+        <p class="big-paragraph big-paragraph--s big-paragraph-break">Barwa:</p>
+
+        <p class="big-paragraph big-paragraph--s">Mieszanka sałat (radicchio,roszponka, sałata strzępiasta) mix kolorów w zależności od rodzaju : biały, jasno do ciemnnozielony, bordowy do fioletowego.</p>
+        <p class="big-paragraph big-paragraph--s">- Ser mozarella - biały</p>
+        <p class="big-paragraph big-paragraph--s">- Sos pesto pietruszkowe – zielony</p>
+        <p class="big-paragraph big-paragraph--s">- Szynka dojrzewająca – biała, jasnoróżowa, jasnobrązowa</p>
+        <p class="big-paragraph big-paragraph--s">- Pomidory cherry - czerwone</p>
+        <p class="big-paragraph big-paragraph--s">- Oliwki czarne - fioletowe, fioletowo-czarne,  ciemnobrązowe</p>
+        <p class="big-paragraph big-paragraph--s">- Oliwki zielone – szaro-zielone</p>
+        <p class="big-paragraph big-paragraph--s big-paragraph-break">- Prażone pestki słonecznika – brązowo-szare</p>
+
+        <p class="big-paragraph big-paragraph--s big-paragraph-break">Zapach:</p>
+
+        <p class="big-paragraph big-paragraph--s big-paragraph-break">Wybijający się zapach szynki dojrzewającej, lekko mleczny zapach sera mozzarella oraz oliwek dopełniony intensywnie pietruszkową wonią sosu pesto.</p>
+
+        <p class="big-paragraph big-paragraph--s big-paragraph-break">Smak:</p>
+
+        <p class="big-paragraph big-paragraph--s big-paragraph-break">Wyróżniający się smak szynki dojrzewającej, lekko mleczny smak sera mozzarella. Wyczuwalne oliwki.  Sos : Słony, z mocno wyczuwalnym aromatem pietruszki.</p>
+
+        <p class="big-paragraph big-paragraph--s big-paragraph-break">Konsystencja:</p>
+
+        <p class="big-paragraph big-paragraph--s">Po wymieszaniu wszystkich składników i polaniu sosem pesto pietruszkowe  wszystko tworzy zwartą mieszankę, z której wyróżniają się poszczególne składniki.</p>
+      </div>
+
+    </div>
+   </body>
+</html>
